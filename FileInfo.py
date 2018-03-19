@@ -1,4 +1,5 @@
 from os.path import join
+import re
 # A class used to get this file's information
 class FileInfo:
     def __init__(self, _path, _fname):
@@ -15,17 +16,31 @@ class FileInfo:
         return self.fname + ', 字符数：' + str(len(totalstr)) + '\n'
 
     # return the word number of a file
-    def word_num(self):
+    def word_num(self, pre_wordlist, isAdvanced=False):
         # open the file with the name 'filename'
         f = open(self.filename, 'r', encoding='utf-8')
-        totalstr = f.read()
+        lines = f.readlines()
+        f.close()
+        # get the word by regex expression
+        linewords = []
+        for i in range(0, len(lines)):
+            linewords.append(re.findall(r'[A-Za-z]{2,}', lines[i]))
         # count the number of words
         count = 0
-        for c in totalstr:
-            if c == "," or c == " " or c == '\n':
-                count = count + 1
-        f.close()
-        return self.fname + ', 单词数：' + str(count + 1) + '\n'
+        for lineword in linewords:
+            print(lineword)
+            for word in lineword:
+                print(word)
+                if word.isalpha() == False:
+                    lineword.remove(word)
+                elif len(word) == 1:
+                    lineword.remove(word)
+                elif isAdvanced == True and word in pre_wordlist:
+                    lineword.remove(word)
+            if lineword != ['']:
+                count += len(lineword)
+        print(linewords)
+        return self.fname + ', 单词数：' + str(count) + '\n'
 
     # return the line number of a file
     def line_num(self):
