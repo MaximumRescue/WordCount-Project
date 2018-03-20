@@ -48,7 +48,6 @@ class DirInfo:
             infos = infos + new_infos
         return infos
 
-# some test codes, you can ignore them
 if __name__ == "__main__":
     import sys
     dirinfo = DirInfo(sys.path[0])
