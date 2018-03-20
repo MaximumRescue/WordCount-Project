@@ -62,7 +62,7 @@ class FileInfo:
             tmpline = tmpline.replace('\n', '')
             if len(tmpline) == 1 or len(tmpline) == 0:
                 emptylines.append(line)
-            elif tmpline.find('//') >= 0:
+            elif tmpline.startswith('//'):
                 commentlines.append(line)
             else:
                 codelines.append(line)
