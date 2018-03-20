@@ -74,3 +74,8 @@ class FileInfo:
         f = open(filename, 'a', encoding='utf-8')
         f.write(info)
         f.close()
+
+if __name__ == '__main__':
+    import sys
+    nf = FileInfo(sys.path[0], 'test.txt')
+    print(nf.char_num())
