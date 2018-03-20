@@ -2,8 +2,8 @@ import sys, wx
 from os.path import join
 
 # get the preserved words list
-def get_prelist():
-    filename = join(sys.path[0], "StopList.txt").replace('\\', '\\\\')
+def get_prelist(fname):
+    filename = join(sys.path[0], fname).replace('\\', '\\\\')
     fhandle = open(filename, 'r')
     wholestr = fhandle.read()
     prelist = wholestr.split(' ')
