@@ -47,3 +47,11 @@ class DirInfo:
             new_infos = newdir.build_infolist(type)
             infos = infos + new_infos
         return infos
+
+# some test codes, you can ignore them
+if __name__ == "__main__":
+    import sys
+    dirinfo = DirInfo(sys.path[0])
+    for info in dirinfo.build_infolist('.txt'):
+        print(info.fname)
+    
