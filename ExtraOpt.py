@@ -1,9 +1,17 @@
 import sys, wx
-from os.path import join
+from os.path import join, isdir, isfile, dirname
+
+# get the correct path
+def cur_file_dir():    
+    path = sys.path[0]
+    if isdir(path):
+        return path
+    elif isfile(path):
+        return dirname(path)
 
 # get the preserved words list
 def get_prelist(fname):
-    filename = join(sys.path[0], fname).replace('\\', '\\\\')
+    filename = join(cur_file_dir(), fname).replace('\\', '\\\\')
     fhandle = open(filename, 'r')
     wholestr = fhandle.read()
     prelist = wholestr.split(' ')
