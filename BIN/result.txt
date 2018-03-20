@@ -1,0 +1,4 @@
+﻿testfile.c, 字符数：52
+testfile.c, 单词数：6
+testfile.c, 行数：6
+testfile.c, 代码行/空行/注释行：3/2/1
