@@ -13,10 +13,10 @@ class FileInfo:
         f = open(self.filename, 'r', encoding='utf-8')
         totalstr = f.read()
         f.close()
-        return self.fname + ', 字符数：' + str(len(totalstr)) + '\n'
+        return self.fname + ', 字符数：' + str(len(totalstr))
 
     # return the word number of a file
-    def word_num(self, pre_wordlist, isAdvanced=False):
+    def word_num(self, pre_wordlist):
         # open the file with the name 'filename'
         f = open(self.filename, 'r', encoding='utf-8')
         lines = f.readlines()
@@ -28,19 +28,16 @@ class FileInfo:
         # count the number of words
         count = 0
         for lineword in linewords:
-            print(lineword)
             for word in lineword:
-                print(word)
                 if word.isalpha() == False:
                     lineword.remove(word)
                 elif len(word) == 1:
                     lineword.remove(word)
-                elif isAdvanced == True and word in pre_wordlist:
+                elif word in pre_wordlist:
                     lineword.remove(word)
             if lineword != ['']:
                 count += len(lineword)
-        print(linewords)
-        return self.fname + ', 单词数：' + str(count) + '\n'
+        return self.fname + ', 单词数：' + str(count)
 
     # return the line number of a file
     def line_num(self):
@@ -48,7 +45,7 @@ class FileInfo:
         f = open(self.filename, 'r', encoding='utf-8')
         lines = f.readlines()
         f.close()
-        return self.fname + ', 行数：' + str(len(lines)) + '\n'
+        return self.fname + ', 行数：' + str(len(lines))
 
     # return line details of a file
     def line_detail(self):
@@ -70,7 +67,7 @@ class FileInfo:
             else:
                 codelines.append(line)
         return self.fname + ', 代码行/空行/注释行：' + str(len(codelines)) + '/'\
-                + str(len(emptylines)) + '/' + str(len(commentlines)) + '\n'
+                + str(len(emptylines)) + '/' + str(len(commentlines))
 
     # write the information to the file
     def write_file(self, filename, info):
